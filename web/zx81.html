@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ZX81 Emulator</title>
+  </head>
+  <body>
+    <script>
+      window.onerror = function (msg, url, line) {
+        alert("Error: " + msg + " line: " + line + " script:" + url);
+      };
+    </script>
+    <script src="./jtyone_min.js"></script>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const pFile = urlParams.get("p");
+      const page = urlParams.get("page");
+      const bookUrl = `30_programs_for_the_ZX81_1K(acme).pdf#page=${page}`
+
+      let emulatorUI;
+      window.onload = function () {
+        emulatorUI = new ZX81EmulatorUI("emulator_canvas", pFile);
+        //'emulator_status');
+        document.getElementById("program").innerText = pFile.toUpperCase().replaceAll("_", " ");
+        document.getElementById("book").src = bookUrl;
+      };
+      window.onunload = function () {
+        emulatorUI.stop();
+      };
+    </script>
+
+    <h2>Not Only 30 Programs for the Sinclair ZX81</h2>
+
+    <h3 id="program"></h3>
+
+    <p>See the book for how to run the program. In most cases type R followed by ENTER.</p>
+
+    <div style="width: 100%; overflow: hidden">
+      <div style="width: 52%; float: left">
+        <canvas id="emulator_canvas">
+          It appears your browser does not support the canvas element so no
+          emulator is available.
+        </canvas>
+      </div>
+      <div>
+        <embed id="book"
+          type="application/pdf"
+          frameBorder="0"
+          scrolling="auto"
+          height="480"
+          width="400"></embed>        
+      </div>
+    </div>
+
+    <p>
+      <span id="statusLabel">&nbsp;</span>
+    </p>
+  </body>
+</html>

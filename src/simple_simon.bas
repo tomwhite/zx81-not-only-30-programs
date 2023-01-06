@@ -1,0 +1,33 @@
+100 LET A$ = "\::"
+# (graphics space)
+110 LET B$ = " "
+# (space)
+120 LET Y$ = ""
+# (empty string)
+130 FOR G = 1 TO 20
+140 LET X = 28 + INT (36*RND)
+150 LET Y$ = Y$ + CHR$ X
+160 FAST
+170 FOR L = 1 TO 8
+180 LET V = PEEK (7679 + L + 8*X)
+190 LET P$ = ""
+# (empty string)
+200 LET D = 256
+210 FOR K = 8 TO 1 STEP -1
+220 LET D = D / 2
+230 LET C$ = B$
+240 IF V < D THEN GOTO 270
+250 LET C$ = A$
+260 LET V = V - D
+270 LET P$ = P$ + C$
+280 NEXT K
+290 PRINT P$
+300 NEXT L
+310 SLOW
+320 PAUSE 70 - 3*G
+330 CLS
+340 INPUT Z$
+350 IF Y$ <> Z$ THEN GOTO 370
+360 NEXT G
+370 PRINT "YOU SAID "; Z$
+380 PRINT Y$ ; " IS RIGHT"

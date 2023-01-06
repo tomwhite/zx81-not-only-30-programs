@@ -38,7 +38,7 @@ If we look at the program's display routine, from line 400, we see that line 420
 
 Line 440 then looks at all positions in the display file memory (it is looping over `I`) and if any are the number being searched for (`R`, which can be between 1 and 8) then that memory address is set (by a `POKE` command) to `O` (52) or `X` (61).
 
-The trouble is that the loop at line 430 is only looping to `Z*B + B`, which since `Z=4` and `B=8` is only 40 characters, which suffices for the compressed display of the 1K ZX81, but on a 16K machine it won't check enough of the display file before exiting to loop. This means tht not all of the board is searched, and the game doesn't work properly.
+The trouble is that the loop at line 430 is only looping to `Z*B + B`, which since `Z=4` and `B=8` is only 40 characters, which suffices for the compressed display of the 1K ZX81, but on a 16K machine it won't check enough of the display file before exiting the loop. This means that not all of the board is searched, and the game doesn't work properly.
 
 <!-- I had to convert the text file to P, open in an emulator, define the variables (`X`, `Y`, `Z`, `B`, and `S` as described in the text), then resave the image as a P file. This works because the P file contains a copy of the variables in memory. -->
 

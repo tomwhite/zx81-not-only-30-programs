@@ -36,7 +36,7 @@
 400 IF P>B THEN LET P=P-B
 410 LET R=P
 420 LET D=PEEK 16396+256*PEEK 16397
-# replace Z with 32 in next line for 16K ZX81 since display file is not compressed
+# tw: replace Z with 32 in next line for 16K ZX81 since display file is not compressed
 430 FOR I=X TO 32*B+B
 440 IF PEEK(D+I)=R+28 THEN POKE D+I,V
 450 NEXT I

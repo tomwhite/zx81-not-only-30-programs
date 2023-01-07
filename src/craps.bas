@@ -16,7 +16,7 @@
 260 GOTO 280
 270 PRINT"SCORE ";C;" AND LOSE"
 280 PRINT
-# Note that we escape the quotes in line below using \", not ""
+# tw: note that we escape the quotes in line below using \", not ""
 290 PRINT"TYPE \"Y\" TO CONTINUE"
 300 INPUT L$
 310 IF L$<>"Y" THEN STOP

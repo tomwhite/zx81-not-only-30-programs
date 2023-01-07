@@ -1,0 +1,26 @@
+100 LET A=600
+110 LET B=0
+120 LET H=INT (RND * 18)
+130 LET V=INT (RND * 26)
+140 PRINT AT H-1,V+1 ; "  "
+# (2 blanks)
+150 PRINT AT H,V ; " \ '\.' "
+# (blank, graphics 2,T,blank)
+160 PRINT AT H+1,V; " \ '\ ' "
+# (blank, 2*graphic 2,blank)
+170 PRINT AT H+2,V+1 ; "  "
+# (2 blanks)
+180 PRINT AT 11,15 ; "+"
+190 LET A=A-1
+200 IF A=0 THEN GOTO 300
+210 IF INKEY$="5" THEN LET V=V-1
+220 IF INKEY$="6" THEN LET H=H+1
+230 IF INKEY$="7" THEN LET H=H-1
+240 IF INKEY$="8" THEN LET V=V+1
+250 IF INKEY$="9" THEN GOTO 270
+260 GOTO 140
+270 IF H >= 10 AND H <= 11 AND V >= 13 \
+      AND V <= 14 THEN LET B=B+1
+280 CLS
+290 GOTO 120
+300 PRINT AT 0,0 ;; "SCORE=" ; B

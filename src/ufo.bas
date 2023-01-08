@@ -1,0 +1,28 @@
+105 LET B=2
+110 FOR N=30 TO 1 STEP -1
+120 PRINT AT B,N;"\.'\'."
+# (graphics T,Y)
+140 PRINT AT B,N;"  "
+# (2 spaces)
+145 IF INKEY$="F" THEN GOTO 205
+150 NEXT N
+160 FOR N= 1 TO 30
+170 PRINT AT B,N;"\.'\'."
+# (graphics T,Y)
+180 PRINT AT B,N;"  "
+# (2 spaces)
+185 IF INKEY$="F" THEN GOTO 205
+190 NEXT N
+200 GOTO 110
+205 PRINT AT B,N;"\.'\'."
+# (graphics T,Y)
+210 FOR X=20 TO 1 STEP -1
+212 LET Y=15
+215 PRINT AT X,Y;"\.'\. "
+# (graphics T4)
+220 PRINT AT X,Y;"  "
+# (2 spaces)
+222 IF B=X AND Y=N THEN GOTO 230
+225 NEXT X
+227 GOTO 40
+230 PRINT AT X,Y;"BOOOOM"

@@ -13,9 +13,12 @@ The programs are saved in text format with a `.bas` file extension. Graphics cha
 The `zxtext2p` command was used to convert these text files to ZX81 P files suitable for use in an emulator, or a real ZX81. For example:
 
 ```bash
-~/sw/zxtext2p/zxtext2p -o web/images/craps.p src/craps.bas
+export PATH=$PATH:~/projects-workspace/zxtext2p
+zxtext2p -d -o web/images/craps.p src/craps.bas
 xxd -p web/images/craps.p | tr -d '\n' > web/images/craps.p.hex
 ```
+
+Note that the `-d` option is needed to collapse the display file in the P file so that it can fit on a 1K ZX81. This option is not available on the standard version of ZXText2P, so I created a version that adds it. [TODO: link]
 
 Or just run the following to convert all files:
 

@@ -9,7 +9,7 @@ p: ${PS}
 phex: ${PHS}
 
 web/images/%.p : src/%.bas
-	~/sw/zxtext2p/zxtext2p -o $@ $<
+	zxtext2p -d -o $@ $<
 
 %.p.hex : %.p
 	xxd -p $< | tr -d '\n' > $@

@@ -1,0 +1,37 @@
+90 LET M = Z * Z
+100 DIM P (Y+Y)
+110 PRINT AT Z,X; "$"; M ;" BET?"
+120 INPUT B
+125 CLS
+130 IF B > M THEN STOP
+140 LET M = M - B
+150 PRINT "  YOU"; TAB Z; "ZX81"
+160 FOR I = Y TO X STEP - X
+170 GOSUB T * T
+180 NEXT I
+190 FOR I = X TO Y
+200 LET A = P(I) = X + Z
+210 IF I = X THEN PRINT AT Z,X; "HIT?"
+220 IF I = X THEN INPUT A$
+230 PRINT AT Z,X; "    "
+240 IF I = X AND CODE A$ = CODE B$ THEN GOTO 280
+250 GOSUB T * T
+260 IF P(I) > T OR (I=Y AND P(I) > 16) THEN \
+      GOTO 290
+270 GOTO T * Z
+280 NEXT I
+290 IF (P(Y) <= T AND P(Y) >= P(X) ) OR \
+      P(X) > T THEN LET B = B - B
+300 LET M = M + B + B
+310 GOTO Z * Z
+500 LET P(I+Y) = P(I+Y) + X
+510 LET C = INT (13 * RND) + Y
+520 IF C = Z + X THEN LET A = A + X
+530 LET P(I) = P(I) + C * ( C < Z+Y ) + \
+      Z * ( C > Z+X )
+540 IF P(I) < T+X OR A = X - X THEN GOTO 570
+550 LET A = A - X
+560 LET P(I) = P(I) - Z
+570 PRINT AT X+Y, Y * P(I+Y) + Z * (I=Y); B$(C)
+580 PRINT AT Y+Y, Z * I - Z + Y ;P(I)
+590 RETURN

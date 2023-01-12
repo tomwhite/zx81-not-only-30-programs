@@ -1,2 +1,3 @@
 *.p
 *.p.hex
+.DS_Store

@@ -57,6 +57,20 @@ The program doesn't check if the battleships overlap, so there can be less than 
 
 Escaping quotes in quotes needs `\"` for `zxtext2p`, rather than `""` as on the ZX81 keyboard (shift Q).
 
+### Blackjack
+
+This one uses two programs: the first to load variables (after which it can be deleted to free up space), and the second to do the work.
+
+This means that `zxtext2p` isn't sufficient to produce a single P file for the final result. So to get around this I used `zxtext2p` to convert the second program to a P file, which I then loaded in an emulator (zxsp). I then defined the variables by entering them without line numbers, then saved a new P file containing the program and the variables.
+
+However, zxsp can't save a 1K P file with a collapsed display file (I'm not aware of any emulator that can do this on a Mac). So I wrote a script to collapse the display file:
+
+```
+python scripts/collapse_dfile.py web/images/blackjack_tmp.p web/images/blackjack.p
+printf '\x40' | dd of=web/images/blackjack.p bs=1 seek=50 count=1 conv=notrunc
+xxd -p web/images/blackjack.p | tr -d '\n' > web/images/blackjack.p.hex
+```
+
 ## TODO
 
 - Eliminate hex files (js can just load P files directly into arrays)

@@ -103,6 +103,19 @@ xxd -p web/images/doctor_zx81.p | tr -d '\n' > web/images/doctor_zx81.p.hex
 rm web/images/doctor_zx81_tmp.p
 ```
 
+### Draughts
+
+This program is the most ambitious in the book; even entering the code is a challenge. Rather than type the machine code one byte at a time, as suggested in the book, I cut and pasted the code and created the REM line in a syntax that JSZeddy understands (see `src/draughts_program1.txt`).
+
+```
+xxd -p -r web/images/draughts.p.hex web/images/draughts_tmp.p
+python scripts/collapse_dfile.py web/images/draughts_tmp.p web/images/draughts.p
+xxd -p web/images/draughts.p | tr -d '\n' > web/images/draughts.p.hex
+rm web/images/draughts_tmp.p
+```
+
+Unfortunately, this did not work! I couldn't get the program running on a real 1K machine.
+
 ## Copyright and License
 
 The programs are copyright (c) 1981 by Beam Software.

@@ -1,0 +1,9 @@
+120 LET A$ = "1B B B BB B B B 3B B B B#88 #88 #88 #88 5#88 #88 #88 #88W W W W 7W W W WW W W W "
+# The graphics character is obtained by using GRAPHICS and (Shift) (A)
+130 STOP
+150 FOR L = VAL "1" TO VAL "8"
+160 PRINT A$ ( TO VAL "8" )
+170 LET A$ = A$ ( VAL "9" TO )
+180 NEXT L
+200 INPUT A$
+310 IF USR 16514 > VAL "0" THEN GOTO 200

@@ -1,0 +1,21 @@
+210 LET S = PEEK 16396 + VAL "256" * PEEK 16397
+220 LET F = S + CODE A$ + VAL "9" * CODE A$ ( \
+   VAL "2" ) - VAL "298"
+230 LET T = S + CODE A$ ( VAL "3" ) + VAL "9" * \
+   CODE A$ ( VAL "4" ) - VAL "298"
+240 LET M = (T + F) / VAL "2"
+250 IF (PEEK F <> CODE "W" AND PEEK F <> CODE \
+  "#BC") OR (ABS (F-T) > VAL "10" AND PEEK M <> \
+  CODE "B" AND PEEK M <> CODE "#A7") OR (PEEK F \
+  < CODE "X" AND F<T) OR PEEK T <> CODE "#88" THEN \
+  GOTO 200
+# Letters in squares are inverse characters obtained using GRAPHICS mode •
+270 POKE T, CODE "W" + CODE "#88" * (PEEK F > \
+  CODE "W" OR (T-S) < VAL "9")
+# The graphic character in this line is obtained in GRAPHICS
+# mode by pressing (Space)
+280 POKE F, CODE "#88"
+# This is Graphics A
+290 IF ABS (F-T) > VAL "10" THEN POKE M, \
+  CODE "#88"
+300 PAUSE CODE "W"

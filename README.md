@@ -26,7 +26,7 @@ Or just run the following to convert all files:
 make
 ```
 
-The web pages use the excellent [JtyOne Online ZX81 Editor](https://www.zx81stuff.org.uk/zx81/jtyone.html) to run the programs.
+The web pages use the excellent [JtyOne Online ZX81 Emulator](https://www.zx81stuff.org.uk/zx81/jtyone.html) to run the programs.
 
 ## Notes on the programs
 

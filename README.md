@@ -67,13 +67,28 @@ However, zxsp can't save a 1K P file with a collapsed display file (I'm not awar
 
 ```
 python scripts/collapse_dfile.py web/images/blackjack_tmp.p web/images/blackjack.p
-printf '\x40' | dd of=web/images/blackjack.p bs=1 seek=50 count=1 conv=notrunc
+printf '\x40' | dd of=web/images/blackjack.p bs=1 seek=50 count=1 conv=notrunc # fix CDFLAG
 xxd -p web/images/blackjack.p | tr -d '\n' > web/images/blackjack.p.hex
+rm web/images/blackjack_tmp.p
 ```
 
-## TODO
+### Caves and Pitfalls
 
-- Eliminate hex files (js can just load P files directly into arrays)
+Like Blackjack, this program is entered in two parts in order to save space.
+
+This time I used [JSZeddy](https://weggetjes.nl/jszeddy/jszeddy.html), an online ZX81 emulator, since it allows you to load multiple listings without resetting the memory, which is crucial. It allows you to export the P file as a hex string, so I converted it to a binary file as follows:
+
+```
+xxd -p -r web/images/caves_and_pitfalls.p.hex web/images/caves_and_pitfalls_tmp.p
+```
+
+Then did the 1K conversion:
+
+```
+python scripts/collapse_dfile.py web/images/caves_and_pitfalls_tmp.p web/images/caves_and_pitfalls.p
+xxd -p web/images/caves_and_pitfalls.p | tr -d '\n' > web/images/caves_and_pitfalls.p.hex
+rm web/images/caves_and_pitfalls_tmp.p
+```
 
 ## Copyright and License
 

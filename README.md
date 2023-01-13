@@ -90,6 +90,19 @@ xxd -p web/images/caves_and_pitfalls.p | tr -d '\n' > web/images/caves_and_pitfa
 rm web/images/caves_and_pitfalls_tmp.p
 ```
 
+### Doctor ZX81
+
+Parts of this program are written in machine code, and there's an elaborate procedure to enter the code that's described in the book.
+
+I used JSZeddy again to produce a hex file, which I then processed as follows:
+
+```
+xxd -p -r web/images/doctor_zx81.p.hex web/images/doctor_zx81_tmp.p
+python scripts/collapse_dfile.py web/images/doctor_zx81_tmp.p web/images/doctor_zx81.p
+xxd -p web/images/doctor_zx81.p | tr -d '\n' > web/images/doctor_zx81.p.hex
+rm web/images/doctor_zx81_tmp.p
+```
+
 ## Copyright and License
 
 The programs are copyright (c) 1981 by Beam Software.

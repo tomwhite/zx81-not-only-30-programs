@@ -1,3 +1,10 @@
+# tw: a 16K version with an alteration on line 430
+# tw: we have room to store the variables too
+1 LET X = 1
+2 LET Y = 2
+3 LET Z = 4
+4 LET B = 8
+5 LET S = 100 
 50  PAUSE S*Z
 60  CLS
 70  LET A$="1\:: 2\:: 38\:: X\:: 47\:: 6\:: 5"
@@ -36,7 +43,8 @@
 400 IF P>B THEN LET P=P-B
 410 LET R=P
 420 LET D=PEEK 16396+256*PEEK 16397
-# tw: replace Z with 32 in next line for 16K ZX81 since display file is not compressed
+# tw: replace Z with 32 in next line for 16K ZX81 since display file is not collapsed
+# tw: this works, but is slow since it has to scan a lot more memory
 430 FOR I=X TO 32*B+B
 440 IF PEEK(D+I)=R+28 THEN POKE D+I,V
 450 NEXT I

@@ -35,15 +35,15 @@ The web pages use the excellent [JtyOne Online ZX81 Editor](https://www.zx81stuf
 As the book says "its logic is fairly well hidden and the use of variables in the listing makes it difficult to know what is happening".
 This is as a result of getting it to work in under 1K of memory.
 
-It turns out that it doesn't work on a ZX81 with 16K because of the way it uses the display file. The 1K ZX81 has a compressed representation, where blank characters are skipped - so a blank screen is just a series of newlines. (This is mentioned in Chapter 27 of the ZX81 manual.) With a 16K memory extension this optimisation is not needed, and all characters on the screen can be stored, even blank ones.
+It turns out that it doesn't work on a ZX81 with 16K because of the way it uses the display file. The 1K ZX81 has a "collapsed" (or compressed) representation, where blank characters are skipped - so a blank screen is just a series of newlines. (This is mentioned in Chapter 27 of the ZX81 manual.) With a 16K memory extension this optimisation is not needed, and all characters on the screen can be stored, even blank ones.
 
 If we look at the program's display routine, from line 400, we see that line 420 finds the address of the display file by `PEEK`ing the `D_FILE` system variable at address 16396 and 16397.
 
 Line 440 then looks at all positions in the display file memory (it is looping over `I`) and if any are the number being searched for (`R`, which can be between 1 and 8) then that memory address is set (by a `POKE` command) to `O` (52) or `X` (61).
 
-The trouble is that the loop at line 430 is only looping to `Z*B + B`, which since `Z=4` and `B=8` is only 40 characters, which suffices for the compressed display of the 1K ZX81, but on a 16K machine it won't check enough of the display file before exiting the loop. This means that not all of the board is searched, and the game doesn't work properly.
+The trouble is that the loop at line 430 is only looping to `Z*B + B`, which since `Z=4` and `B=8` is only 40 characters, which suffices for the collapsed display of the 1K ZX81, but on a 16K machine it won't check enough of the display file before exiting the loop. This means that not all of the board is searched, and the game doesn't work properly.
 
-<!-- I had to convert the text file to P, open in an emulator, define the variables (`X`, `Y`, `Z`, `B`, and `S` as described in the text), then resave the image as a P file. This works because the P file contains a copy of the variables in memory. -->
+I made an alteration to make it work when the display file is not collapsed (see `src/noughts_and_crosses_16k.bas`), but it is a lot slower since it has to scan a lot more memory.
 
 ### Pinch
 

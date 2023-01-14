@@ -28,6 +28,15 @@ make
 
 The web pages use the excellent [JtyOne Online ZX81 Emulator](https://www.zx81stuff.org.uk/zx81/jtyone.html) to run the programs.
 
+To create the zip of P files:
+
+```bash
+ln -s web/images 30-programs
+zip --include "*.p" -r 30-programs 30-programs
+mv 30-programs.zip web
+rm 30-programs
+```
+
 ## Notes on the programs
 
 ### Noughts and crosses

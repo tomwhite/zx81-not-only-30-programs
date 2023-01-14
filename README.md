@@ -1,6 +1,6 @@
 # Not Only 30 Programs for the Sinclair ZX81
 
-Run the programs from this classic book in your browser, or load them onto a real ZX81.
+Run the programs from this classic book [in your browser](https://tomwhite.github.io/zx81-not-only-30-programs/web/index.html), or load them onto a real ZX81.
 
 ![Not Only 30 Programs for the Sinclair ZX81 front cover](web/NotOnly30ProgramsForTheSinclairZX81.Front.Small.jpg)
 

@@ -2,7 +2,7 @@
 
 Run the programs from this classic book in your browser, or load them onto a real ZX81.
 
-![Not Only 30 Programs for the Sinclair ZX81 front cover](web/NotOnly30ProgramsForTheSinclairZX81.Front.jpg)
+![Not Only 30 Programs for the Sinclair ZX81 front cover](web/NotOnly30ProgramsForTheSinclairZX81.Front.Small.jpg)
 
 ## How this site was built
 
@@ -18,7 +18,7 @@ zxtext2p -d -o web/images/craps.p src/craps.bas
 xxd -p web/images/craps.p | tr -d '\n' > web/images/craps.p.hex
 ```
 
-Note that the `-d` option is needed to collapse the display file in the P file so that it can fit on a 1K ZX81. This option is not available on the standard version of ZXText2P, so I created a version that adds it. [TODO: link]
+Note that the `-d` option is needed to collapse the display file in the P file so that it can fit on a 1K ZX81. This option is not available on the standard version of ZXText2P, so I created a version that adds it (see https://github.com/tomwhite/zxtext2p).
 
 Or just run the following to convert all files:
 
